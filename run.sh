@@ -31,7 +31,7 @@ cat decdec.fasta \
     | grep -v '^>' | wc -c
 
 
-./crux-4.1.Linux.x86_64/bin/crux tide-index --decoy-format none decdec.fasta decdec.idx 
-./crux-4.1.Linux.x86_64/bin/crux tide-search --precursor-window 10 --precursor-window-type ppm --overwrite T ./data/150713IA_Inge_Maria_20.mzML decdec.idx
+./crux-4.1.Linux.x86_64/bin/crux tide-index --decoy-format none  decdec.fasta decdec.idx 
+./crux-4.1.Linux.x86_64/bin/crux tide-search --precursor-window 10 --precursor-window-type ppm --overwrite T --top-match 1 ./data/150713IA_Inge_Maria_20.mzML decdec.idx
 
 cut -f 15 crux-output/tide-search.target.txt | gawk -F '_' '{print $1}' | sort | uniq -c 
