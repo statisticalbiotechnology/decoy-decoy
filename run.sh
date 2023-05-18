@@ -34,4 +34,9 @@ cat decdec.fasta \
 ./crux-4.1.Linux.x86_64/bin/crux tide-index --decoy-format none  decdec.fasta decdec.idx 
 ./crux-4.1.Linux.x86_64/bin/crux tide-search --precursor-window 10 --precursor-window-type ppm --overwrite T --top-match 1 ./data/150713IA_Inge_Maria_20.mzML decdec.idx
 
+echo "Top scoring PSMs"
 cut -f 15 crux-output/tide-search.target.txt | gawk -F '_' '{print $1}' | sort | uniq -c 
+
+echo "100 highest scoring Top.scoring PSMs"
+cut -f 9,15 crux-output/tide-search.target.txt | tail -n +2 | sort -nr | \
+    head -n 100 | cut -f 2 | gawk -F '_' '{print $1}' | sort | uniq -c 
