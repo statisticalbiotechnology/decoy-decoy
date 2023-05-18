@@ -1,5 +1,5 @@
 # output of script
-'''
+```
 (base) lukask@shannon:~/git/decoy-decoy$ ./run.sh
 Castor bean
 10621203
@@ -83,4 +83,4 @@ INFO: Return Code:0
   20412 Bean
   20788 Mouse
       1 protein id
-'''
+```
